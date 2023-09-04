@@ -1,3 +1,7 @@
+var playerScore = 0;
+var computerScore = 0;
+var roundNumber = 0;
+
 function getComputerChoice() {
     // Create string array and fill with possible choices
     var computerChoice = ["rock", "paper", "scissors"]
@@ -10,7 +14,6 @@ function getComputerChoice() {
 // Create function that plays a single round of Rock Paper Scissors. 
 // The function should take two parameters - the playerSelection (case-insensitive) and computerSelection
 // Return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
-
 function playRound(playerSelection, computerSelection) {
 
     console.log("You chose " + playerSelection + ".")
@@ -46,48 +49,67 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// Helper function for tied game scenario
 function tiedGame(playerSelection, computerSelection) {
     console.log("It's a tie! You both chose " + playerSelection + ".")
     displayScores()
 }
 
+// Helper function for computer wins scenario
 function computerWins(playerSelection, computerSelection) {
     console.log("You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerSelection + ".")
     computerScore++
     displayScores()
 }
 
+// Helper function for player wins scenario
 function playerWins(playerSelection, computerSelection) {
     console.log("You win! " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " beats " + computerSelection + ".")
     playerScore++
     displayScores()
 }
 
+// Helper function to display scores
 function displayScores() {
     console.log("SCORE: You: " + playerScore + " | Computer: " + computerScore);
 }
 
+function getPlayerChoice() {
+    //Prompt player for their choice, exit game if cancelled
+    let playerSelection;
+    while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
+        playerSelection = prompt("Rock, Paper, or Scissors?");
+        if (playerSelection === null) {
+            return "cancel"
+        } else {
+            playerSelection = playerSelection.toLowerCase();
+            if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") {
+                return playerSelection;
+            } else {
+                alert("Not an option. Please enter either 'rock', 'paper', or 'scissors'.")
+            }
+        }
+    }
+}
+
 function game() {
-    let numOfRounds = 1;
+    playerScore = 0;
+    computerScore = 0;
+    roundNumber = 1;
 
     // Loop to play game five times
-    while (numOfRounds <= 5) {
+    while (roundNumber <= 5) {
     
-    //Prompt player for their choice, exit game if cancelled
-    let playerSelection = prompt("Rock, Paper, or Scissors?");
-    if (playerSelection === null) {
+    let playerSelection = getPlayerChoice();
+    if (playerSelection === "cancel") {
         console.log("Goodbye!")
         return
-    } else {
-        // Convert player choice to lowercase
-        playerSelection = playerSelection.toLowerCase();
     }
-
     let computerSelection = getComputerChoice();
     console.log("")
-    console.log("--ROUND " + numOfRounds + "--")
+    console.log("--ROUND " + roundNumber + "--")
     playRound(playerSelection, computerSelection);
-    numOfRounds++ // Increment round number
+    roundNumber++ // Increment round number
     }
     console.log("")
     if (playerScore > computerScore) {
@@ -103,7 +125,6 @@ function game() {
 }
 
 // Call function to begin game
-var playerScore = 0;
-var computerScore = 0;
+
 
 game();
