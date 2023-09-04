@@ -3,23 +3,16 @@ var computerScore = 0;
 var roundNumber = 0;
 
 function getComputerChoice() {
-    // Create string array and fill with possible choices
     var computerChoice = ["rock", "paper", "scissors"]
-    // Generate random number between 0-2
     var i = Math.floor(3 * Math.random());
-    // Return string from random index as computer's "choice"
     return computerChoice[i]
 }
 
-// Create function that plays a single round of Rock Paper Scissors. 
-// The function should take two parameters - the playerSelection (case-insensitive) and computerSelection
-// Return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 function playRound(playerSelection, computerSelection) {
 
     console.log("You chose " + playerSelection + ".")
     console.log("The computer chose " + computerSelection + ".")
 
-// If player chooses Rock
     if (playerSelection === "rock") {
         if (computerSelection === "rock") {
             tiedGame(playerSelection, computerSelection);
@@ -49,33 +42,28 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// Helper function for tied game scenario
 function tiedGame(playerSelection, computerSelection) {
     console.log("It's a tie! You both chose " + playerSelection + ".")
     displayScores()
 }
 
-// Helper function for computer wins scenario
 function computerWins(playerSelection, computerSelection) {
     console.log("You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerSelection + ".")
     computerScore++
     displayScores()
 }
 
-// Helper function for player wins scenario
 function playerWins(playerSelection, computerSelection) {
     console.log("You win! " + playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1) + " beats " + computerSelection + ".")
     playerScore++
     displayScores()
 }
 
-// Helper function to display scores
 function displayScores() {
     console.log("SCORE: You: " + playerScore + " | Computer: " + computerScore);
 }
 
 function getPlayerChoice() {
-    //Prompt player for their choice, exit game if cancelled
     let playerSelection;
     while (playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors") {
         playerSelection = prompt("Rock, Paper, or Scissors?");
@@ -125,6 +113,4 @@ function game() {
 }
 
 // Call function to begin game
-
-
 game();
