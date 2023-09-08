@@ -1,12 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="us" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="javascript.js"></script>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
+        <h1 class="game-title"><span>じゃん</span> <span>けん</span> <span>ぽん!</span></h1>
+        <!-- <h1 id="title-jan">じゃん</h1>
+        <h1 id="title-punc">-</h1>
+        <h1 id="title-ken">けん</h1>
+        <h1 id="title-punc">-</h1>
+        <h1 id="title-pon">ぽん</h1>
+        <h1 id="title-punc">!</h1> -->
+    <div class="selection-container">
+            <h2 class="player-instructions">Choose your hand. First to five wins the match!</h2>
+        <div id="player-selection">
+            <img id="rock" src="./images/rock-up.png" alt="Rock">
+            <img id="paper"  src="./images/paper-up.png" alt="Paper">
+            <img id="scissors" src="./images/scissors-up.png" alt="Scissors">
+            <!-- <button id="rock">✊🏻</button>
+            <button id="paper">✋🏻</button>
+            <button id="scissors">✌🏻</button> -->
+        </div>
+    </div>
     
+            <!-- <h2 class="round">ROUND <div id="round-number">1</div></h2> -->
+
+        <div class="scoreboard">
+            <div class="scoreboard-player">
+                <h2>YOU</h2>
+                <img class="choices" id="player-choice" src="./images/blank.png" alt="The players choice">
+                <h2 class="scores" id="player-score">0</h2>
+            </div>
+            <div class="scoreboard-computer">
+                <h2>COMPUTER</h2>
+                <img class="choices" id="computer-choice" src="./images/blank.png" alt="The computers choice">
+                <h2 class="scores" id="computer-score">0</h2>
+            </div>
+        </div>
+
+
 </body>
 </html>
