@@ -6,6 +6,12 @@
     <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="styles.css">
     <title>にゃん けん!</title>
+    <link rel="prefetch" href="./images/rock-left.png">
+    <link rel="prefetch" href="./images/scissors-left.png">
+    <link rel="prefetch" href="./images/paper-left.png">
+    <link rel="prefetch" href="./images/cat-paper.png">
+    <link rel="prefetch" href="./images/cat-rock.png">
+    <link rel="prefetch" href=".images/cat-scissors.png">
 </head>
 <body>
     <div class="game-container">
@@ -36,8 +42,10 @@
                 <p id="human-3">&#9676;</p>
                 <p id="human-4">&#9676;</p>
                 <p id="human-5">&#9676;</p>
-            </div>           
+            </div>
+            <div class="human-choice-div">      
                 <img class="choices" id="human-choice" src="./images/blank.png" alt="The humans choice">
+            </div>     
             </div>
             <div class="scoreboard-cat">
                 <h2>猫</h2>
@@ -48,7 +56,9 @@
                 <p id="cat-4">&#9676;</p>
                 <p id="cat-5">&#9676;</p>
                 </div>
-                <img class="choices" id="cat-choice" src="./images/blank.png" alt="The cat's choice">
+                <div class="cat-choice-div">
+                    <img class="choices" id="cat-choice" src="./images/blank.png" alt="The cat's choice">
+                </div>
             </div>
         </div>
         <h3 class="game-status"></h3>

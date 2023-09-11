@@ -189,6 +189,8 @@ function displayScores() {
 
 function onTick() {
     if (char == 0) {
+        humanChoiceImg.classList.add("bounce");
+        catChoiceImg.classList.add("bounce");
         gameStatusUI.textContent = "";
         humanChoiceImg.src = humanRockPNG;
         catChoiceImg.src = catRockPNG;
@@ -206,6 +208,8 @@ function onTick() {
         gameInfoUI.textContent = startGameString2;
     }
     if (char === 3) {
+        humanChoiceImg.classList.remove("bounce");
+        catChoiceImg.classList.remove("bounce");
         humanButtons.forEach((img) => {
             img.classList.remove('clicked');
           })

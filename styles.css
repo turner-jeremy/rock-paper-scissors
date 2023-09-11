@@ -7,7 +7,7 @@
 }
 
 html {
-    background-color: seashell;
+    background-color: #2e266a;
 }
 
 .game-container {
@@ -20,7 +20,7 @@ html {
     border-style: solid;
     border-width: clamp(3px, 0.5vw, 8px);
     border-radius: clamp(0px, 7vw, 60px);
-    background-color:rgb(61, 35, 158); 
+    background-color:cadetblue;
 }
 
 .game-title {
@@ -29,18 +29,13 @@ html {
     flex: 1;
 }
 
-.game-title,
-.selection-container {
-    border-bottom-style: solid;
-    border-bottom-width: inherit;
-}
 .game-title h1 {
     font-family: 'Cherry Bomb One';
     display: inline-block;
     font-size: clamp(30px, 10vw, 90px);
     margin: auto;
     text-align: center;
-    text-shadow:  0 0 0.3em navy;
+    text-shadow:  0 0 1em rgb(235, 229, 255);
     color: #baa8f0;
     /* background-color: #033546; */
     -webkit-text-stroke-width: clamp(1px, 0.2vw, 2px);
@@ -58,8 +53,21 @@ html {
     opacity: 0;
 }
 
-#human-choice,
-#cat-choice {
+@keyframes bounce {
+    0%      {transform:translateY(0px);}
+    50%     {transform:translateY(10px);}
+    100%    {transform:translateY(0px);}
+}
+
+.bounce {
+    display: inline-block;
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+.human-choice-div,
+.cat-choice-div {
     border-radius: clamp(0px, 7vw, 60px);
     border-style: solid;
     border-width: clamp(4px, 0.5vw, 8px);
@@ -67,16 +75,16 @@ html {
     background-color:ghostwhite;
 }
 
-#human-choice.winner,
-#cat-choice.winner {
+.human-choice-div .winner,
+.cat-choice-div .winner {
     background-color: limegreen;
-    transition: all 0.2s ease;
+    border-radius: clamp(6px, 4vw, 60px);
 }
 
-#human-choice.loser,
-#cat-choice.loser {
+.human-choice-div .loser,
+.cat-choice-div .loser {
     background-color: darkred;
-    transition: all 0.1s ease;
+    border-radius: clamp(7px, 5vw, 50px);
 }
 
 .winner.fade, 
@@ -88,11 +96,11 @@ html {
     display: flex;
     flex-direction: column;
     gap: 1cqw;
-    background-color: #2e266a;
     justify-content: center;
     align-items: center;
     margin: auto;
     flex: 1;
+    height: 20vh;
 }
 
 .human-instructions,
@@ -104,7 +112,7 @@ html {
     text-align: center;
     margin: 1cqh 0 0 0;
     padding: 0 1cqw;
-    font-size: clamp(12px, 4vw, 24px);
+    font-size: clamp(12px, 3.5vw, 22px);
     color: white;
 }
 
@@ -184,8 +192,6 @@ button#reset-game {
     margin: 0 auto 1cqw auto;
     color: white;
     padding: 16px;
-    /* width: 20cqw; */
-    /* height: 8cqw; */
     font-size: clamp(12px, 4vw, 32px);
     border-radius: 2cqw;
 }
