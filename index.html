@@ -5,43 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>にゃん けん!</title>
 </head>
 <body>
-        <h1 class="game-title"><span>じゃん</span> <span>けん</span> <span>ぽん!</span></h1>
-        <!-- <h1 id="title-jan">じゃん</h1>
-        <h1 id="title-punc">-</h1>
-        <h1 id="title-ken">けん</h1>
-        <h1 id="title-punc">-</h1>
-        <h1 id="title-pon">ぽん</h1>
-        <h1 id="title-punc">!</h1> -->
-    <div class="selection-container">
-            <h2 class="player-instructions">Choose your hand. First to five wins the match!</h2>
-        <div id="player-selection">
-            <img id="rock" src="./images/rock-up.png" alt="Rock">
-            <img id="paper"  src="./images/paper-up.png" alt="Paper">
-            <img id="scissors" src="./images/scissors-up.png" alt="Scissors">
-            <!-- <button id="rock">✊🏻</button>
-            <button id="paper">✋🏻</button>
-            <button id="scissors">✌🏻</button> -->
+    <div class="game-container">
+        <div class="game-title">
+            <h1>にゃん けん</h1>
+         </div>
+        <div class="selection-container">
+                <h2 class="human-instructions">選んだ手をクリックしちゃおう</h2>
+            <div id="human-selection">
+                <img id="rock" src="./images/rock-up.png" alt="Rock">
+                <img id="paper"  src="./images/paper-up.png" alt="Paper">
+                <img id="scissors" src="./images/scissors-up.png" alt="Scissors">
+                <!-- <button id="rock">✊🏻</button>
+                <button id="paper">✋🏻</button>
+                <button id="scissors">✌🏻</button> -->
+            </div>
+        </div>        
+        <div class="game-info">
+            <p>最初に5ポイントをゲットした<br>プレイヤーがマッチの勝者だよ！</p>
         </div>
-    </div>
-    
-            <!-- <h2 class="round">ROUND <div id="round-number">1</div></h2> -->
 
         <div class="scoreboard">
-            <div class="scoreboard-player">
-                <h2>YOU</h2>
-                <img class="choices" id="player-choice" src="./images/blank.png" alt="The players choice">
-                <h2 class="scores" id="player-score">0</h2>
+            <div class="scoreboard-human">
+                <h2>人間的</h2>
+                <div class="human-score">
+                <p id="human-1">&#9676;</p>
+                <p id="human-2">&#9676;</p>
+                <p id="human-3">&#9676;</p>
+                <p id="human-4">&#9676;</p>
+                <p id="human-5">&#9676;</p>
+            </div>           
+                <img class="choices" id="human-choice" src="./images/blank.png" alt="The humans choice">
             </div>
-            <div class="scoreboard-computer">
-                <h2>COMPUTER</h2>
-                <img class="choices" id="computer-choice" src="./images/blank.png" alt="The computers choice">
-                <h2 class="scores" id="computer-score">0</h2>
+            <div class="scoreboard-cat">
+                <h2>猫</h2>
+                <div class="cat-score">
+                <p id="cat-1">&#9676;</p>
+                <p id="cat-2">&#9676;</p>
+                <p id="cat-3">&#9676;</p>
+                <p id="cat-4">&#9676;</p>
+                <p id="cat-5">&#9676;</p>
+                </div>
+                <img class="choices" id="cat-choice" src="./images/blank.png" alt="The cat's choice">
             </div>
         </div>
+        <h3 class="game-status"></h3>
 
-
+    </div>    
 </body>
 </html>
