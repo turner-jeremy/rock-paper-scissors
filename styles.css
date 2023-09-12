@@ -7,50 +7,141 @@
 }
 
 html {
-    background-color: #2e266a;
+    background-image: url("./images/cat-paw-background.png");
+    background-size: 2vw;
+    background-color: darkslateblue;
 }
 
 .game-container {
     margin: auto;
     width: 100%;
     max-width: 1000px;
-    min-height: 90vh;
-    max-height: 100vh;
+    background-color: white;
     padding: 0;
     border-style: solid;
-    border-width: clamp(3px, 0.5vw, 8px);
+    border-width: clamp(1px, 0.1vw, 2px);
+    border-color: grey;
     border-radius: clamp(0px, 7vw, 60px);
-    background-color:cadetblue;
+    /* background-color:cadetblue; */
 }
 
 .game-title {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    background-color: whitesmoke;
     flex: 1;
+    padding-bottom: 12px;
+    border-bottom-style: solid;
+    border-bottom-width: clamp(1px, 0.1vw, 2px);
+    border-color: grey;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
 }
 
 .game-title h1 {
     font-family: 'Cherry Bomb One';
     display: inline-block;
-    font-size: clamp(30px, 10vw, 90px);
+    font-size: clamp(50px, 10vw, 90px);
     margin: auto;
     text-align: center;
-    text-shadow:  0 0 1em rgb(235, 229, 255);
     color: #baa8f0;
     /* background-color: #033546; */
     -webkit-text-stroke-width: clamp(1px, 0.2vw, 2px);
     -webkit-text-stroke-color: black;
 }
 
-.animate-text {
-    display: inline-block;
-    transition: all 0.2s ease;
-    -webkit-text-stroke-width: 0.3cqw;
-    -webkit-text-stroke-color: white;
+.game-title p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: clamp(16px, 4vw, 24px);
 }
 
-.animate-text.fade {
-    opacity: 0;
+.game-title img {
+    width: clamp(12px, 3vw, 24px)
+}
+
+.game-info,
+.game-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 12px 0;
+    font-size: clamp(10px, 4vw, 28px);
+    /* line-height: clamp(12px, 32px, 40px); */
+    /* min-height: 5vh; */
+    font-style: italic;
+}
+
+.game-info p {
+    margin: 0;
+}
+
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0cqw;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    flex: 1;
+    padding-bottom: 3vh;
+    /* height: 20vh; */
+}
+
+.selection-container h2.round {
+    font-size: clamp(16px, 4vw, 28px);
+}
+
+.human-instructions,
+.winner-announce {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 1cqh 0;
+    padding: 0 1cqw;
+    font-size: clamp(12px, 3.5vw, 22px);
+    /* color: white; */
+}
+
+.scoreboard {
+    display: flex;
+    gap: clamp(10px, 5vw, 80px);
+    justify-content: center;
+    flex: 3;
+}
+
+.scoreboard-human,
+.scoreboard-cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scoreboard-human p,
+.scoreboard-cat p {
+    display: inline;
+    font-size: clamp(10px, 4vw, 28px);
+}
+
+.scoreboard-human h2,
+.scoreboard-cat h2 {
+    text-align: center;
+    margin: 0;
+    font-size: clamp(12px, 6vw, 40px);
+}
+
+.choices {
+    display: flex;
+    height: 30cqw;
+    max-height: 300px;
+    width: auto;
+    margin: auto;
 }
 
 @keyframes bounce {
@@ -70,8 +161,8 @@ html {
 .cat-choice-div {
     border-radius: clamp(0px, 7vw, 60px);
     border-style: solid;
-    border-width: clamp(4px, 0.5vw, 8px);
-    border-color: black;
+    border-width: clamp(2px, 0.2vw, 4px);
+    border-color:rgb(117, 117, 117);
     background-color:ghostwhite;
 }
 
@@ -81,6 +172,7 @@ html {
     align-items: center;
     margin: 0;
     min-height: 45px;
+    gap: 2px;
 }
 
 .human-score p,
@@ -93,30 +185,6 @@ html {
 
 .loser {
     background-color: darkred;
-}
-
-.selection-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1cqw;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    flex: 1;
-    height: 20vh;
-}
-
-.human-instructions,
-.winner-announce,
-.round {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 1cqh 0 0 0;
-    padding: 0 1cqw;
-    font-size: clamp(12px, 3.5vw, 22px);
-    color: white;
 }
 
 #human-selection {
@@ -136,54 +204,12 @@ html {
     padding: 5px;
 }
 
-.game-info,
-.game-status {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-    margin: 0;
-    font-size: clamp(12px, 4vw, 28px);
-    line-height: clamp(12px, 32px, 40px);
-    min-height: 8vh;
+#human-selection img.clicked {
+    background-color: orchid;
+    border-color: white;
+    border-width: 1qw;
 }
 
-.scoreboard {
-    display: flex;
-    gap: clamp(10px, 5vw, 80px);
-    justify-content: center;
-    color: white;
-    flex: 3;
-    /* max-height: 500px; */
-}
-
-.scoreboard-human,
-.scoreboard-cat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.scoreboard-human p,
-.scoreboard-cat p {
-    display: inline;
-    font-size: clamp(10px, 5vw, 30px);
-}
-
-.scoreboard-human h2,
-.scoreboard-cat h2 {
-    text-align: center;
-    margin: 0;
-    font-size: clamp(10px, 4vw, 40px);
-}
-.choices {
-    display: flex;
-    height: 30cqw;
-    max-height: 300px;
-    width: auto;
-    margin: auto;
-}
 .end-game {
     margin: auto;
     align-items: center;
@@ -203,8 +229,3 @@ button#reset-game {
     border-radius: 2cqw;
 }
 
-#human-selection img.clicked {
-    background-color: orchid;
-    border-color: white;
-    border-width: 1qw;
-}

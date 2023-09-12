@@ -8,8 +8,8 @@ var char = 0;
 var timer = 0;
 var drawGame = false;
 const pointsHTML = ["&#9312;", "&#9313;", "&#9314;", "&#9315;", "&#9316;"];
-catChoiceJpn = "";
-humanChoiceJpn = "";
+var catChoiceJpn = "";
+var humanChoiceJpn = "";
 
 const roundNumberUI = document.querySelector('.human-instructions');
 const humanScoreDiv = document.querySelector('.human-score');
@@ -42,7 +42,7 @@ const startGameString1 = "最初はグー"
 const startGameString2 = "にゃんけんぽん！"
 const drawGameString = "あいこでしょ"
 
-newPlaybackRate = 1.2;
+newPlaybackRate = 1.2; // Speeds up audio playback rate to match animation
 startGameAudio1.playbackRate = newPlaybackRate;
 startGameAudio2.playbackRate = newPlaybackRate;
 drawGameAudio.playbackRate = newPlaybackRate;
@@ -50,28 +50,20 @@ humanWinnerAudio.playbackRate = newPlaybackRate;
 catWinnerAudio.playbackRate = newPlaybackRate;
 gameInfoAudio.playbackRate = newPlaybackRate;
 
+gameInfoAudio.play(); // Plays audio instructions when game first loads
 
-gameInfoAudio.play();
 humanButtons.forEach((img) => {
           img.addEventListener('click', () => {
                 if (selectionMade === false) {
-                    selectionMade = true;
-                    img.classList.add('clicked');
+                    selectionMade = true; // locks player from making new selection until round is complete
+                    img.classList.add('clicked'); // css highlights player selection
                     humanSelection = img.id;
                     playRound();
                 }
               });
-
           });
 
-function getCatChoice() {
-    const catChoice = ["rock", "paper", "scissors"]
-    var i = Math.floor(3 * Math.random());
-    return catChoice[i]
-}
-
 function playRound() {
-    if (humanScore >= 5 || catScore >= 5) return;
     roundNumberUI.classList.add("round");
     roundNumberUI.textContent = "ラウンド " + roundNumber;
     humanChoiceDiv.classList.remove("winner");
@@ -79,6 +71,12 @@ function playRound() {
     catChoiceDiv.classList.remove("winner");
     catChoiceDiv.classList.remove("loser");
     animateTitle();
+}      
+
+function getCatChoice() {
+    const catChoice = ["rock", "paper", "scissors"]
+    var i = Math.floor(3 * Math.random());
+    return catChoice[i]
 }
 
 function showScores() {
