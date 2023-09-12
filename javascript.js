@@ -15,11 +15,11 @@ const roundNumberUI = document.querySelector('.human-instructions');
 const humanScoreDiv = document.querySelector('.human-score');
 const catScoreDiv = document.querySelector('.cat-score');
 const gameTitle = document.querySelector('.game-title');
+const catChoiceDiv = document.querySelector('.cat-choice-div');
+const humanChoiceDiv = document.querySelector('.human-choice-div');
 const humanChoiceImg = document.getElementById('human-choice');
 const catChoiceImg = document.getElementById("cat-choice");
 const gameInfoUI = document.querySelector('.game-info');
-const gameStatusUI = document.querySelector('.game-status');
-
 const selectionContainer = document.querySelector('.selection-container');
 const humanButtons = selectionContainer.querySelectorAll('img');
 var catScoreUI = catScoreDiv.querySelectorAll('p');
@@ -32,11 +32,26 @@ const catRockPNG = "./images/cat-rock.png";
 const catPaperPNG = "./images/cat-paper.png";
 const catScissorsPNG = "./images/cat-scissors.png";
 const blankPNG = "./images/blank.png";
-
+const startGameAudio1 = new Audio('./audio/start-game-1.mp3');
+const startGameAudio2 = new Audio('./audio/start-game-2.mp3');
+const drawGameAudio = new Audio('./audio/draw-game.mp3');
+const humanWinnerAudio = new Audio('./audio/human-winner.mp3');
+const catWinnerAudio = new Audio('./audio/cat-winner.mp3');
+const gameInfoAudio = new Audio('./audio/game-info.mp3');
 const startGameString1 = "最初はグー"
 const startGameString2 = "にゃんけんぽん！"
 const drawGameString = "あいこでしょ"
 
+newPlaybackRate = 1.2;
+startGameAudio1.playbackRate = newPlaybackRate;
+startGameAudio2.playbackRate = newPlaybackRate;
+drawGameAudio.playbackRate = newPlaybackRate;
+humanWinnerAudio.playbackRate = newPlaybackRate;
+catWinnerAudio.playbackRate = newPlaybackRate;
+gameInfoAudio.playbackRate = newPlaybackRate;
+
+
+gameInfoAudio.play();
 humanButtons.forEach((img) => {
           img.addEventListener('click', () => {
                 if (selectionMade === false) {
@@ -59,12 +74,10 @@ function playRound() {
     if (humanScore >= 5 || catScore >= 5) return;
     roundNumberUI.classList.add("round");
     roundNumberUI.textContent = "ラウンド " + roundNumber;
-    humanChoiceImg.classList.remove("winner");
-    humanChoiceImg.classList.remove("loser");
-    catChoiceImg.classList.remove("winner");
-    catChoiceImg.classList.remove("loser");
-    // humanChoiceImg.src = blankPNG;
-    // catChoiceImg.src = blankPNG;
+    humanChoiceDiv.classList.remove("winner");
+    humanChoiceDiv.classList.remove("loser");
+    catChoiceDiv.classList.remove("winner");
+    catChoiceDiv.classList.remove("loser");
     animateTitle();
 }
 
@@ -143,9 +156,11 @@ function animateTitle() {
 function endMatch() {
     roundNumberUI.classList.remove("round");
     if (humanScore === 5) {
-      winner = "おめでとう！マッチ勝ってしまったね！やったねー！";
+      winner = "おめでとう！勝ったね！やったねー！";
+      humanWinnerAudio.play();
     } else if (catScore === 5) {
       winner = "ニャーニャー！猫が勝者だよー！やったね、ニャンコ！";
+      catWinnerAudio.play();
     }
     selectionContainer.innerHTML = `<div class="selection-container">
     <h1 class="winner-announce">${winner}</h1>
@@ -161,8 +176,8 @@ function tiedGame(humanSelection, catSelection) {
 }
 
 function catWins(humanSelection, catSelection) {
-    humanChoiceImg.classList.add("loser");
-    catChoiceImg.classList.add("winner");
+    humanChoiceDiv.classList.add("loser");
+    catChoiceDiv.classList.add("winner");
     catScore++
     drawGame = false;
     displayScores()
@@ -170,8 +185,8 @@ function catWins(humanSelection, catSelection) {
 }
 
 function humanWins(humanSelection, catSelection) {
-    humanChoiceImg.classList.add("winner");
-    catChoiceImg.classList.add("loser");
+    humanChoiceDiv.classList.add("winner");
+    catChoiceDiv.classList.add("loser");
     humanScore++
     drawGame = false;
     displayScores()
@@ -191,21 +206,22 @@ function onTick() {
     if (char == 0) {
         humanChoiceImg.classList.add("bounce");
         catChoiceImg.classList.add("bounce");
-        gameStatusUI.textContent = "";
         humanChoiceImg.src = humanRockPNG;
         catChoiceImg.src = catRockPNG;
-
         if (drawGame === true) {
             gameInfoUI.textContent = drawGameString;
+            drawGameAudio.play();
             char = 3;
             return;
         } else {
         gameInfoUI.textContent = startGameString1;
+        startGameAudio1.play();
         }
     }
 
     if (char == 2) {
         gameInfoUI.textContent = startGameString2;
+        startGameAudio2.play();
     }
     if (char === 3) {
         humanChoiceImg.classList.remove("bounce");

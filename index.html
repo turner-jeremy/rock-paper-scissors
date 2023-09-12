@@ -5,37 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascript.js" defer></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <title>にゃん けん!</title>
     <link rel="prefetch" href="./images/rock-left.png">
     <link rel="prefetch" href="./images/scissors-left.png">
     <link rel="prefetch" href="./images/paper-left.png">
     <link rel="prefetch" href="./images/cat-paper.png">
     <link rel="prefetch" href="./images/cat-rock.png">
-    <link rel="prefetch" href=".images/cat-scissors.png">
+    <link rel="prefetch" href="./images/cat-scissors.png">
 </head>
 <body>
     <div class="game-container">
         <div class="game-title">
             <h1>にゃん けん</h1>
          </div>
-        <div class="selection-container">
-                <h2 class="human-instructions">選んだ手をクリックしちゃおう</h2>
-            <div id="human-selection">
-                <img id="rock" src="./images/rock-up.png" alt="Rock">
-                <img id="paper"  src="./images/paper-up.png" alt="Paper">
-                <img id="scissors" src="./images/scissors-up.png" alt="Scissors">
-                <!-- <button id="rock">✊🏻</button>
-                <button id="paper">✋🏻</button>
-                <button id="scissors">✌🏻</button> -->
-            </div>
-        </div>        
+        
         <div class="game-info">
-            <p>最初に5ポイントをゲットした<br>プレイヤーがマッチの勝者だよ！</p>
+            <p>最初に5ポイントをゲットした<br>プレイヤーが勝者だよ！</p>
         </div>
 
         <div class="scoreboard">
             <div class="scoreboard-human">
-                <h2>人間的</h2>
+                <h2>あなた</h2>
                 <div class="human-score">
                 <p id="human-1">&#9676;</p>
                 <p id="human-2">&#9676;</p>
@@ -61,8 +52,17 @@
                 </div>
             </div>
         </div>
-        <h3 class="game-status"></h3>
-
+        <div class="selection-container">
+            <h2 class="human-instructions">選んだ手をクリックしよう</h2>
+        <div id="human-selection">
+            <img id="rock" src="./images/rock-up.png" alt="Rock">
+            <img id="paper"  src="./images/paper-up.png" alt="Paper">
+            <img id="scissors" src="./images/scissors-up.png" alt="Scissors">
+            <!-- <button id="rock">✊🏻</button>
+            <button id="paper">✋🏻</button>
+            <button id="scissors">✌🏻</button> -->
+        </div>
+    </div>        
     </div>    
 </body>
 </html>
